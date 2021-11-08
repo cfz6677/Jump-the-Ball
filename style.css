@@ -1,0 +1,34 @@
+html {
+    margin: 0;
+    padding: 0%;
+    background-color: black;
+
+}
+body {
+    background-color: lightblue;
+}
+
+
+canvas {
+    background-size: 5000px;
+    width: 100%;
+    height: 100%;    
+}
+
+#container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 10px;
+    display: grid;
+    grid-gap: 5em;
+    grid-template-rows: .25fr .5fr .25fr;
+    grid-template-columns: .25fr .5fr .25fr;
+    grid-template-areas: "top-left top-left top-right"
+                          "game game game"
+                          "btm-left btm-right btm-right";
+}
+
+#top #bottom {
+    flex-direction: row;
+    
+  }
