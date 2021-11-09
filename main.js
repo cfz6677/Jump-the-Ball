@@ -1,13 +1,13 @@
+let ctx = game.getContext('2d');
+
 let canvas = document.querySelector("#game");
 let movementDisplay = document.querySelector("moevement")
 let start = document.querySelector("#top-right")
 let player;
 let balls;
-let ctx = game.getContext('2d');
-
-ctx fillStyle = 'yellow';
-ctx strokeStyle = 'blue';
-ctx linewidth = 10;
+ctx: fillStyle = 'yellow';
+ctx: strokeStyle = 'blue';
+ctx: linewidth = 10;
 
 //======Canvas
 game.setAttribute('400', getComputedStyle(game)['400']);
@@ -35,6 +35,7 @@ class Player {
             ctx.fillRect(this.x, this.y, this.width, this.height);
         }
     }
+
 }
 class Balls {
     constructor(x, y, height, width, color) {
@@ -68,5 +69,4 @@ let ball = {
     radius: 30,
     velX: (Math.random() * 15 + 5) * (Math.floor(Math.random) * 2) ||
     velY: (Math.random() * 15 + 5) * (Math.floor(Math.random) * 2) ||
-
 }
