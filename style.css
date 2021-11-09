@@ -1,11 +1,11 @@
 html {
     margin: 100;
     padding: 0%;
-    background-color: lightgreen;
+    background-color:  rgb(228, 162, 20);
 }
 
 body {
-    background-color:lightgreen;
+    background-color: rgb(228, 162, 20);
 }
 
 canvas {
@@ -16,14 +16,14 @@ canvas {
 }
 h1 {
     font-size: 100px;
-    color: green;
+    color:  white;
     text-align: center;
-    background-color: lightgreen;
+    background-color:  rgb(228, 162, 20);
 }
 
 #container {
-    background-image: url(https://cdn.pixabay.com/photo/2020/03/19/05/00/nature-4946282_1280.jpg);
-    background-color: lightgreen;
+    background-image: url(https://images.unsplash.com/photo-1617141870851-3e8c8c172595?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80);
+    background-color: rgb(228, 162, 20);
     width: 55em;
     height: 50em;
     margin: auto;
