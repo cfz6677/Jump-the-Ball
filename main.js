@@ -29,6 +29,11 @@ class Player {
         this.height = height;
         this.width = width;
         this.color = color;
+        
+        this.render = function () {
+            ctx.fillStyle = this.color;
+            ctx.fillRect(this.x, this.y, this.width, this.height);
+        }
     }
 }
 class Balls {
