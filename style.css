@@ -1,41 +1,67 @@
 html {
     margin: 100;
     padding: 0%;
-    background-color: lightgreen;
+    background-color:  rgb(228, 162, 20);
 }
 
 body {
-    background-color:lightgreen;
-}
-
-canvas {
-    display: flex;
-    width: 100px;
-    height: 100px;
-    color: rgb(8, 52, 66);    
+    background-color: rgb(228, 162, 20);
+    margin: 0px;
+    padding: 0px;
 }
 h1 {
     font-size: 100px;
-    color: green;
+    color:  white;
     text-align: center;
-    background-color: lightgreen;
+    background-color:  rgb(228, 162, 20);
+    font-family: cursive;
+}
+
+p {
+    text-align: center;
+    color: white;
+    font-size: 40px;
+    font-family: cursive;
+}
+canvas {
+    background: url("https://images.unsplash.com/photo-1617141870851-3e8c8c172595?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 #container {
-    background-image: url(https://cdn.pixabay.com/photo/2020/03/19/05/00/nature-4946282_1280.jpg);
-    background-color: lightgreen;
-    width: 55em;
-    height: 50em;
-    margin: auto;
+    /* background: url(https://images.unsplash.com/photo-1617141870851-3e8c8c172595?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80);
+    /* background-size: 1600px 800px; */
+    background-repeat: no-repeat;
+    background-color: rgb(228, 162, 20);
+    max-width: 45em;
+    height: 120vh;
+    margin: 0 auto;
     padding: 0em;
     display: grid;
-    grid-gap: 0em;
-    grid-template-rows: .15fr .75fr .15fr;
-    grid-template-columns: .40fr .40fr .40fr;
+    grid-gap: 1em;
+    grid-template-rows: .25fr .5fr .25fr;
+    grid-template-columns: .25fr .5fr .25fr;
     grid-template-areas: "top-left top-right top-right"
                             "game game game"
-                            "bottom-left bottom-center bottom-right";
+                            "bottom bottom bottom";
 }
+/* #container {
+    max-width: 50em;
+    height: 70vh;
+    background-color: rgb(111, 12, 32);
+    margin: 0 auto;
+    padding: 1em;
+    display: grid;
+    grid-gap: 1em;
+    grid-template-rows: .25fr .5fr .25fr;
+    grid-template-columns: .25fr .5fr .25fr;
+    grid-template-areas: "top-left top-left top-right"
+                          "game game game"
+                          "btm-left btm-right btm-right";
+} */
+    
+
 #top-left {
     grid-area: top-left;
     text-align: left;
@@ -64,4 +90,7 @@ h1 {
 }
 #title {
     text-align: center;
+}
+main {
+    grid-area: game;
 }
