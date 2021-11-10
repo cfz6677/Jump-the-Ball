@@ -22,24 +22,22 @@ game.setAttribute('width', getComputedStyle(game)["width"]);
 
 // // ===============Player and Balls===============
 class Player {
-    constructor(x, y, height, width, color) {
-        this.x = x;
-        this.y = y;
+    constructor(pos, height, width, color) {
+        this.pos = pos;
         this.height = height;
         this.width = width;
         this.color = color;
 
         this.render = function () {
             ctx.fillStyle = this.color;
-            ctx.fillRect(this.x, this.y, this.width, this.height, this.color);
+            ctx.fillRect(this.pos, this.width, this.height, this.color);
         }
     }
-
 }
 class Ball {
-    constructor(x, y, color, radius) {
-        this.x = x;
-        this.y = y;
+    constructor(pos, vel, color, radius) {
+        this.pos = pos;
+        this.vel = vel;
         this.color = color;
         this.radius = radius;
         this.render = function () {
@@ -47,26 +45,49 @@ class Ball {
             if (canvas.getContext) {
                 var ctx = canvas.getContext('2d');
 
-                ctx.fillStyle = 'rgb(200, 0, 0)';
-                ctx.fillRect(10, 10, 50, 50);
+                // ctx.fillStyle = 'rgb(200, 0, 0)';
+                // ctx.fillRect(10, 10, 50, 50);
 
-                ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
-                ctx.fillRect(30, 30, 50, 50);
+                // ctx.fillStyle = 'rgba(0, 0, 200, 0.5)';
+                // ctx.fillRect(30, 30, 50, 50);
 
-                var x = canvas.width / 2;
-                var y = canvas.height - 10;
-                var dx = 2;
-                var dy = -2;
-
-
-
-
-                // ctx.fillStyle = this.color, this.radius;
-                // ctx.fillRect(this.x, this.y, this.color, this.radius);
+                ctx.fillStyle = this.color, this.radius;
+                ctx.fillRect(this.pos, this.vel, this.color, this.radius);
             }
         }
     }
 }
+
+move() {
+    this.vel.y += 0.1;
+    this.pos.add(this.vel);
+    if (this.pos.x < this.radius) {
+        this.pos.x = this.radius;
+        this.vel.x = -this.vel.x;
+    }
+    if (this.pos.x > width - this.radius) {
+        this.pos.x = width - this.radius;
+        this.vel.x = -this.vel.x;
+    }
+    if (this.pos.y < this.radius) {
+        this.pos.y = this.radius;
+        this.vel.y = -this.vel.y;
+    }
+    if (this.pos.y > height - this.radius) {
+        this.pos.y = height - this.radius;
+        this.vel.y = -this.vel.y;
+    }
+}
+
+render() {
+    fill(this.color);
+    ellipse(this.pos.x, this.pos.y, this.radius * 2);
+}
+
+
+
+
+
 var ball1 = new Ball(100, 100, "white", 100);
 var ball2 = new Ball(50, 50, "aqua", 10);
 var ball3 = new Ball(50, 50, "aquamarine", 10);
@@ -103,35 +124,64 @@ var ball30 = new Ball(50, 50, "purple", 10);
 // // ======= Functions
 //  player, ctx, balls
 
-function drawBall() {
-    ctx.beginPath();
-    ctx.arc(x, y, 10, 0, Math.PI*2);
-    ctx.fillStyle = "#0095DD";
-    ctx.fill();
-    ctx.closePath();
+function setup() {
+    createGame(600, 880);
+    for (i = 0; i < 5; i++) {
+        balls.push(new Ball(
+            createVector(random(width), random(height)),
+            p5.Vector.random2D().mult(random(10)),
+            30,
+            color(random(255), random(255), random(255))
+        ));
+    }
 }
-
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    drawBall();
-    x += dx;
-    y += dy;
+    background(255);
+
+    for (let i = 0; i < balls.length; i++) {
+        for (let j = 0; j < i; j++) {
+            balls[i].collide(balls[j]);
+        }
+    }
+
+    for (let i = 0; i < balls.length; i++) {
+        balls[i].move();
+        balls[i].render();
+    }
+}
+//===============GUI==========//
+function addNewBsll() {
+    Ball.alive = false;
+    setTimeout(function () {
+        let x = Math.floor(Math.random() * game.width) - 40;
+        let y = Math.floor(Math.random() * game.height) - 80;
+        shrek = new Crawler(x, y, "#bada55", 40, 80);
+    }, 1000);
+    return true;
 }
 
-
-function init() {
-    // canvas.width = 400
-    // canvas.height = 400
-    // window.requestAnimationFrame(900)
-    ball1.render();
+//===================Game Loop============//
+function gameLoop() {
+    ctx.clearRect(0, 0, game.width, game.height);
+    movementDisplay.textContent = `X:${player.x}\nY:${ball.y}`;
+    if (ball.alive) {
+        ball.render();
+        let hit = detectHit(player, ball);
+    }
 }
-init();
 
+//===============collision detection==========//
+function detectHit(p1, p2) {
+    let hitTest = (
+        p1.y + p1.height > p2.y &&
+        p1.y < p2.y + p2.height &&
+        p1.x + p1.width > p2.x &&
+        p1.x < p2.x + p2.width
+    );
 
-// //==============Objects
-
-// let ball = {
-//     radius: 30,
-//     velX: (Math.random() * 15 + 5) * (Math.floor(Math.random) * 2) ||
-//     velY: (Math.random() * 15 + 5) * (Math.floor(Math.random) * 2) ||
-// }
+    if (hitTest) {
+        return addNewBall();
+    } else {
+        return false;
+    }
+}
