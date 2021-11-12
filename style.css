@@ -27,39 +27,24 @@ canvas {
     background: url("https://images.unsplash.com/photo-1617141870851-3e8c8c172595?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80");
     background-size: 100%;
     background-repeat: no-repeat;
+    max-width: 50em;
+    border: 10px solid rgb(228,162,20);
 }
 
 #container {
-    /* background: url(https://images.unsplash.com/photo-1617141870851-3e8c8c172595?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=2070&q=80);
-    /* background-size: 1600px 800px; */
-    background-repeat: no-repeat;
     background-color: rgb(228, 162, 20);
-    max-width: 45em;
-    height: 120vh;
-    margin: 0 auto;
-    padding: 0em;
-    display: grid;
-    grid-gap: 1em;
-    grid-template-rows: .25fr .5fr .25fr;
-    grid-template-columns: .25fr .5fr .25fr;
-    grid-template-areas: "top-left top-right top-right"
-                            "game game game"
-                            "bottom bottom bottom";
-}
-/* #container {
     max-width: 50em;
     height: 70vh;
-    background-color: rgb(111, 12, 32);
     margin: 0 auto;
     padding: 1em;
     display: grid;
     grid-gap: 1em;
     grid-template-rows: .25fr .5fr .25fr;
     grid-template-columns: .25fr .5fr .25fr;
-    grid-template-areas: "top-left top-left top-right"
+    grid-template-areas: "top-left top-right top-right"
                           "game game game"
-                          "btm-left btm-right btm-right";
-} */
+                          "bottom-left bottom-left bottom-left";
+}
     
 
 #top-left {
@@ -81,7 +66,7 @@ canvas {
     border-width: 100px;
 }
 #bottom {
-    grid-area: bottom-center;
+    grid-area: bottom-left;
     text-align: center;
     color: white;
     font-size: 60px;
